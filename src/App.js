@@ -22,7 +22,7 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('http://api.weatherapi.com/v1/forecast.json?key=081468c3730e4590a4113434230701&days=7&aqi=yes&q=' + zip);
+      const response = await fetch('https://api.weatherapi.com/v1/forecast.json?key=081468c3730e4590a4113434230701&days=7&aqi=yes&q=' + zip);
       const data = await response.json();
       setData(data);
     }
@@ -117,7 +117,15 @@ function App() {
 
   return (
     <div style={style()}>
-      <Card boredered={false} title="Weather" headStyle={contentStyle}>
+      <Space
+        direction="vertical"
+        size="middle"
+        style={{
+          display: 'flex',
+          padding: '10px'
+        }}
+      >
+      <Card title="Weather" headStyle={contentStyle} size="small">
       <Collapse defaultActiveKey={['1']}>
       <Panel header={city || "Choose a City :)"}key="1">
         <Form onFinish={onFinish} onFinishFailed={onFinishFailed}>
@@ -155,7 +163,6 @@ function App() {
         </Panel>
       </Collapse>
       </Card>
-      <br />
       {data !== null && city &&
           <div style={{backgroundColor: " #aec6cf",height:"100%", margin:"0px"}}>
           <Card headStyle={contentStyle} title="Sunset Tracker" >
@@ -218,6 +225,7 @@ function App() {
           </Card>
           </div>
       }
+      </Space>
     </div>
   );
 }
