@@ -70,9 +70,7 @@ function App() {
       key: 'condition',
       render: (_, record) => {
         return  (
-          <Space>
             <img src={record.condition.icon} />
-          </Space>
           )
       },
     },
@@ -217,7 +215,7 @@ function App() {
                     description={"Sunset: " + item['astro']['sunset']}
                   />
                   <Card headStyle={cardStyle} bodyStyle={cardStyle} title={new Date(item['date']).toDateString()}>
-                    <Table dataSource={[item['day']]} columns={columns} bordered/>
+                    <Table dataSource={[item['day']]} columns={columns} bordered pagination={false}/>
                   </Card>
                 </List.Item>
               )}
